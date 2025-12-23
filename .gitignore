@@ -1,0 +1,27 @@
+# General
+.DS_Store
+Thumbs.db
+*~
+*.swp
+*.swo
+
+# Editors
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Logs
+*.log
+
+# Ansible
+*.retry
+
+# Chef
+.chef/
+local-mode-cache/
+nodes/
+
+# Puppet
+.vagrant/
+.tmp/

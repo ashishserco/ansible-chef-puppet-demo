@@ -1,0 +1,17 @@
+trigger:
+  paths:
+    include:
+      - chef-example/*
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- script: |
+    curl -L https://omnitruck.chef.io/install.sh | sudo bash -s -- -P chef-workstation
+  displayName: 'Install Chef Workstation'
+
+- script: |
+    cd chef-example/cookbooks/sample_software
+    cookstyle .
+  displayName: 'Run Cookstyle (Linting)'

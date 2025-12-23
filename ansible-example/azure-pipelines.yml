@@ -1,0 +1,24 @@
+trigger:
+  paths:
+    include:
+      - ansible-example/*
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '3.x'
+    addToPath: true
+
+- script: |
+    python -m pip install --upgrade pip
+    pip install ansible
+  displayName: 'Install Ansible'
+
+- script: |
+    ansible-playbook ansible-example/playbooks/install-software.yml --syntax-check
+    ansible-playbook ansible-example/playbooks/patch-linux.yml --syntax-check
+    ansible-playbook ansible-example/playbooks/patch-windows.yml --syntax-check
+  displayName: 'Run Ansible Syntax Check'

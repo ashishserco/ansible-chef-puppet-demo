@@ -1,0 +1,35 @@
+---
+- name: Install Web Server
+  hosts: webservers
+  become: yes
+  tasks:
+    - name: Install Apache (RHEL/CentOS)
+      yum:
+        name: httpd
+        state: present
+      when: ansible_os_family == "RedHat"
+
+    - name: Install Apache (Debian/Ubuntu)
+      apt:
+        name: apache2
+        state: present
+      when: ansible_os_family == "Debian"
+
+    - name: Start and Enable Service (RHEL/CentOS)
+      service:
+        name: httpd
+        state: started
+        enabled: yes
+      when: ansible_os_family == "RedHat"
+
+    - name: Start and Enable Service (Debian/Ubuntu)
+      service:
+        name: apache2
+        state: started
+        enabled: yes
+      when: ansible_os_family == "Debian"
+
+    - name: Deploy Home Page
+      copy:
+        content: "<h1>Managed by Ansible</h1>"
+        dest: /var/www/html/index.html

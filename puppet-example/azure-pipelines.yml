@@ -1,0 +1,26 @@
+trigger:
+  paths:
+    include:
+      - puppet-example/*
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- script: |
+    wget https://apt.puppet.com/puppet7-release-focal.deb
+    sudo dpkg -i puppet7-release-focal.deb
+    sudo apt-get update
+    sudo apt-get install -y puppet-agent
+    export PATH=/opt/puppetlabs/bin:$PATH
+  displayName: 'Install Puppet Agent'
+
+- script: |
+    export PATH=/opt/puppetlabs/bin:$PATH
+    puppet parser validate puppet-example/manifests/software.pp
+  displayName: 'Validate Puppet Manifest'
+
+- script: |
+    export PATH=/opt/puppetlabs/bin:$PATH
+    puppet apply --noop puppet-example/manifests/software.pp
+  displayName: 'Run Puppet Apply (Dry Run)'
