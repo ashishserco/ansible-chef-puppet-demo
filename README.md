@@ -35,7 +35,7 @@ Start here to understand the concepts:
 2. [Configuration Management Explained](docs/configuration-management-explained.md) - Why we need these tools.
 3. [Ansible Explained](docs/ansible-explained.md) - Deep dive into our primary tool.
 4. [Comparison & Migration](docs/comparison-and-migration.md) - Critical analysis of tool tradeoffs.
-5. [Interview Explanation](docs/interview-explanation.md) - How to articulate this knowledge.
+5. [Explanation](docs/explanation.md) - How to articulate this knowledge.
 
 ## Getting Started
 

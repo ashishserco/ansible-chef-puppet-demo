@@ -1,4 +1,4 @@
-# Interview Explanation Guide
+#  Explanation Guide
 
 ## The 2-Minute Pitch
 *Use this when asked: "Tell me about this project" or "What is your experience with configuration management?"*
